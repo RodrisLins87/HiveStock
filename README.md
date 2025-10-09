@@ -24,19 +24,31 @@ Ferramenta de gestão simples, intuitiva e didática
 # Funcionalidades 
 
 # 1VA
- Login diferenciado: Administrativo / Funcionário
+
+🔑 Login diferenciado: Administrativo / Funcionário
+ 
  ⚙️ Cadastro de produtos (admin)
+ 
  ➕ Adicionar quantidade (admin)
+ 
  📦 Retirada de produtos (funcionário)
+ 
  👀 Visualização do estoque (todos)
+ 
  ⚠️ Aviso de estoque baixo
 
  # 2VA 
+ 
  📊 Estratificação por setor (bloco, curso, laboratório)
+ 
  📍 Análise local de consumo
+ 
  📦 Análise dos produtos mais/menos usados
+ 
  👤 Análise por funcionário
+ 
  📈 Visualização em gráficos e relatórios
+ 
 
  # HiveStock
  A HiveStock é uma aplicação voltada à automatização e otimização de processos logísticos e de gestão de estoque, oferecendo à comunidade da UFRPE uma solução acessível, intuitiva e sustentável, capaz de possibilitar análises detalhadas e a consequente melhoria operacional.
