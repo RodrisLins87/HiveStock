@@ -144,7 +144,7 @@ def listar_produtos_periodos():
         time.sleep(2)
         limpar_tela()
 
-        mes = str(mes_int).zfill(2)                                                                         # converte para int e converte para formato 2 dígitos (01, 02, ...)
+        mes = str(mes_int).zfill(2)                                                                         # converte para str e converte para formato 2 dígitos (01, 02, ...)
         break
 
     produtos_do_mes = [p for p in produtos if p["mes_ano"] == f"{mes}/2025"]                                # Percorre a lista de produtos, filtrando apenas pelo mês digitado
