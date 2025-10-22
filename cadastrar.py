@@ -6,6 +6,7 @@ import json
 import re
 import random
 import sys
+
 import smtplib
 from email.message import EmailMessage
 import mimetypes
@@ -52,7 +53,7 @@ def menu():
 def menu_usuario():
     """O MENU DO TIPO DE USUÁRIO"""
     print("Selecione o seu tipo de usuário:")
-    print("\n[1] ADMINISTRADOR \n [2] FUNCIONÁRIO")
+    print("\n[1] ADMINISTRADOR \n[2] FUNCIONÁRIO")
 
 def cadastro_usuario():
 
@@ -65,7 +66,7 @@ def cadastro_usuario():
                 limpar_tela()
                 continue 
                 
-            elif all(char.isalpha() or char.isspace() for char in nome_cadastro): #GARANTE QUE O NOME SÓ TENHA LETRAS E ESPAÇÕES
+            elif all(char.isalpha() and char.isspace() for char in nome_cadastro): #GARANTE QUE O NOME SÓ TENHA LETRAS E ESPAÇÕES
                 print("Nome cadastrado!")
                 break 
             else:
@@ -238,7 +239,7 @@ def cadastro_usuario():
 
     ############################################## SALVANDO DADOS NO JSON #############################################################
 
-    while True:
+    while 1>0:
         menu_usuario()
         tipo_usuário = input("Qual o seu tipo de usuário? ")
         
@@ -270,11 +271,11 @@ def cadastro_usuario():
         else:
             dados = {}
 
-        # Garante que há a lista 'usuarios'
+        
         if "usuarios" not in dados:
             dados["usuarios"] = []
 
-        # Verifica duplicidade
+        
         duplicado = False
         for u in dados["usuarios"]:
             if u.get("email") == usuario["email"] or u.get("matricula") == usuario["matricula"]:

@@ -1,5 +1,11 @@
 {
     "usuarios": [
-        {}
+        {},
+        {
+            "nome": "Bruno",
+            "matricula": "1234567890",
+            "email": "brsl@discente.ifpe.edu.br",
+            "senha": "Recife16@"
+        }
     ]
-}
+}   

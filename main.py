@@ -9,6 +9,9 @@ from recuperacao import buscar_usuario_por_email
 from recuperacao_adm import buscar_usuario_por_email_ADM
 from recuperacao_adm import recuperar_senha_ADM
 
+
+
+
 escolhas_login = ["1", "2", "3", "4"]
 possibilidades_cadastro = ["1", "2"]
 
@@ -34,6 +37,7 @@ while 1>0:
         aguardar(2)
         limpar_tela()
         fazer_login()
+        
 
     elif entrada_1 == "3":
         while 1>0:

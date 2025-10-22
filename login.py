@@ -9,7 +9,8 @@ import os
 import json
 import sys
 from cadastro_de_produtos import cadastro_produtos,atualizar_produtos,excluir_produto,listar_produtos_menu,listar_produtos_periodos
-from alteracao_quantidade import adicionar_quantidade_prod
+from alteracao_quantidade import adicionar_quantidade_prod, retirada_produtos
+from aviso_estoque import monitoramento
 
 def fazer_login():
     caminhos_login=["1","2","3","4"]
@@ -130,9 +131,10 @@ def fazer_login():
                 elif escolha_caminho=="3" and tipo_usuario_login=="1":
                     print("Carregando...")
                     aguardar(3)
+                    limpar_tela()
                     while 1>0:
-                        possibilidade_decisao=["1","2","3","4","5"]
-                        print("[1] CADASTRAR PRODUTO\n[2] VISUALIZAR ESTOQUE\n[3] ATUALIZAR PRODUTOS\n[4] EXCLUIR PRODUTOS\n[5] ADICIONAR QUANTIDADE")
+                        possibilidade_decisao=["1","2","3","4","5","6","7"]
+                        print("[1] CADASTRAR PRODUTO\n[2] VISUALIZAR ESTOQUE\n[3] ATUALIZAR PRODUTOS\n[4] EXCLUIR PRODUTOS\n[5] ADICIONAR QUANTIDADE\n[6] MONITORAMENTO\n [7] SAIR")
                         decisao=input("Selecione o que deseja: ")
                         if not decisao in possibilidade_decisao:
                             print("NÃO CONFERE")
@@ -143,10 +145,10 @@ def fazer_login():
                             cadastro_produtos()
                             aguardar(2)
                             limpar_tela
-                            break 
+                            
                         elif decisao=="2":
                             while 1>0:
-                                print("[1] VISUALIZAR ESTOQUE UNIVERSAL\n[2] VISUALIZAR ESTOQUE POR PERÍODOS")
+                                print("[1] VISUALIZAR ESTOQUE UNIVERSAL\n[2] VISUALIZAR ESTOQUE POR PERÍODOS\n")
                                 possibilidade_visualizar=input("Selecione o que deseja: ")
                                 if not possibilidade_visualizar in possibilidades_menu_login:
                                     print("NÃO CONFERE!")
@@ -167,25 +169,81 @@ def fazer_login():
                         elif decisao=="3":
                             atualizar_produtos()
                             aguardar(2)
-                            limpar_tela
-                            break 
+                            limpar_tela()
+                            
 
                         elif decisao=="4":
                             excluir_produto()
                             aguardar(2)
-                            limpar_tela
-                            break 
+                            limpar_tela()
+                            
 
                         elif decisao=="5":
                             adicionar_quantidade_prod()
                             aguardar(2)
-                            limpar_tela
-                            break 
+                            limpar_tela()
 
+                        elif decisao=="6":
+                            monitoramento()
+                            aguardar(2)
+                            limpar_tela()
 
+                        elif decisao=="7":
+                            return
+                            
 
+                      
 
+                elif escolha_caminho=="3" and tipo_usuario_login=="2":
+                    print("Carregando...")
+                    aguardar(3)
+                    limpar_tela()
+                    while 1>0:
+                        print("[1] VISUALIZAR PRODUTOS\n[2]RETIRAR QUANTIDADE\n")
+                        escolha_funcionario=input("Selecione o que deseja: ")
+                        if not escolha_funcionario in possibilidades_menu_login:
+                            print("NÃO É VÁLIDO!")
+                            aguardar(3)
+                            limpar_tela()
+                            continue 
 
+                        elif escolha_funcionario=="1":
+                            while 1>0:
+                                alternativas_visualizar_funcionario=["1","2","3"]
+                                print("[1] VISUALIZAR TODOS OS PRODUTOS\n[2] VISUALIZAR POR PERÍODOS\n [3] SAIR")
+                                escolha_visualizar=input("Selecione o que deseja: ")
+                                if not escolha_visualizar in alternativas_visualizar_funcionario:
+                                    print("NÃO CONFERE!")
+                                    aguardar(3)
+                                    limpar_tela()
+                                    continue
+                                elif escolha_visualizar=="1":
+                                    listar_produtos_menu()
+                                    aguardar(3)
+                                    limpar_tela()
+                                    
+                                    
+                                elif escolha_visualizar=="2":
+                                    listar_produtos_periodos()
+                                    aguardar(3)
+                                    limpar_tela()
+                                    
+
+                                elif escolha_visualizar=="3":
+                                    return
+                                    
+
+                        elif escolha_funcionario=="2":
+                            retirada_produtos()
+                            aguardar(3)
+                            limpar_tela()
+
+                        
+
+                        elif escolha_funcionario=="4":
+                            return
+
+                        
     
                     
 

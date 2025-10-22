@@ -31,4 +31,3 @@ def monitoramento():
         limpar_tela()
         return
     
-monitoramento()
