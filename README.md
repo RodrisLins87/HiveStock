@@ -23,7 +23,7 @@ Ferramenta de gestão simples, intuitiva e didática
 
 # Funcionalidades 
 
-# 1VA
+# 1 RELEASE
 
 🔑 Login diferenciado: Administrativo / Funcionário
  
@@ -37,7 +37,7 @@ Ferramenta de gestão simples, intuitiva e didática
  
  ⚠️ Aviso de estoque baixo
 
- # 2VA 
+ # 2 RELEASE 
  
  📊 Estratificação por setor (bloco, curso, laboratório)
  

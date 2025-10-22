@@ -40,7 +40,7 @@ def adicionar_quantidade_prod():
             return
         
         print("Aguarde...")
-
+       
         produtos[indice]["Quantidade"] += quantidade                                                                #Soma com a quant antiga
         
         salvar_produtos(produtos)
