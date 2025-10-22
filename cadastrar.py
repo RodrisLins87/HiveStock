@@ -66,7 +66,7 @@ def cadastro_usuario():
                 limpar_tela()
                 continue 
                 
-            elif all(char.isalpha() and char.isspace() for char in nome_cadastro): #GARANTE QUE O NOME SÓ TENHA LETRAS E ESPAÇÕES
+            elif all(char.isalpha() or char.isspace() for char in nome_cadastro): #GARANTE QUE O NOME SÓ TENHA LETRAS E ESPAÇÕES
                 print("Nome cadastrado!")
                 break 
             else:

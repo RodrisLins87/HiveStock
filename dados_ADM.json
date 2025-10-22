@@ -1,11 +1,5 @@
 {
     "usuarios": [
-        {},
-        {
-            "nome": "Bruno",
-            "matricula": "20250016866",
-            "email": "rodrigibruno14@gmail.com",
-            "senha": "Recife16@"
-        }
+        {}
     ]
-}   
+}
