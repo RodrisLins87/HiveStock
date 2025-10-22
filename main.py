@@ -30,14 +30,14 @@ while 1>0:
         aguardar(2)
         limpar_tela()
         cadastro_usuario()
-        break
+        
 
     elif entrada_1 == "2":
         print("Vamos fazer o login!")
         aguardar(2)
         limpar_tela()
         fazer_login()
-        
+
 
     elif entrada_1 == "3":
         while 1>0:

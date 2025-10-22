@@ -6,6 +6,12 @@
             "matricula": "20250016866",
             "email": "rodrigibruno14@gmail.com",
             "senha": "Recife16@"
+        },
+        {
+            "nome": "Bruno Rodrigo Silva Lins",
+            "matricula": "12345789062",
+            "email": "bruno.rodrigol@ufrpe.br",
+            "senha": "Brasil1313@"
         }
     ]
-}   
+}

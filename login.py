@@ -243,9 +243,6 @@ def fazer_login():
                         elif escolha_funcionario=="4":
                             return
 
-                        
-    
-                    
 
                 elif escolha_caminho=="4":
                     print("Saindo...3,2,1")
@@ -262,12 +259,8 @@ def fazer_login():
             print("❌ Usuário ou senha incorretos!")
             aguardar(2)
             limpar_tela()
-            break
+            return
 
 
-    print("Saindo...")
-    aguardar(2)
-    limpar_tela()
-    sys.exit()
+    
 
-fazer_login()
