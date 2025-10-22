@@ -239,7 +239,8 @@ def atualizar_produtos():
                     return
                 else:
                     print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
-
+        return
+    
 def excluir_produto():
     produtos = carregar_produtos()
     if not produtos:
