@@ -1,5 +1,11 @@
 {
     "usuarios": [
-        {}
+        {},
+        {
+            "nome": "Thyago Murilo",
+            "matricula": "12345678912",
+            "email": "thymurilo123@gmail.com",
+            "senha": "Thyago@100"
+        }
     ]
 }
