@@ -75,8 +75,8 @@ def fazer_login():
             aguardar(3)
             limpar_tela()
             while 1>0:  
-                print("[1] VISUALIZAR PERFIL\n[2] EXCLUIR PERFIL\n[3] AVANÇAR\n[4] SAIR")
-                escolha_caminho=input("Selecione o que deseja: ")
+                print("[1] VISUALIZAR PERFIL\n[2] EXCLUIR PERFIL\n[3] AVANÇAR\n[4] SAIR\n")
+                escolha_caminho=input("\nSelecione o que deseja:\n ")
                 if not escolha_caminho in caminhos_login:
                     print("Valor não é válido")
                     continue
@@ -88,7 +88,13 @@ def fazer_login():
                     print(usuario_encontrado['matricula'])
                     print("Email:")
                     print(usuario_encontrado['email'])
-                    break
+                    print("\nPressione ENTER para sair! ")
+                    saida=input()
+                    if saida=='':
+                        print("Saindo...")
+                        aguardar(2)
+                        limpar_tela()
+                        
 
                 elif  escolha_caminho=="2":
                     print("[1] SIM\n[2] NÃO")
@@ -248,8 +254,7 @@ def fazer_login():
                     print("Saindo...3,2,1")
                     aguardar(3)
                     limpar_tela()
-                    sys.exit()
-                    break 
+                    return
 
 
 
