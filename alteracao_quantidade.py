@@ -3,11 +3,10 @@ import time
 import os
 from datetime import datetime
 from cadastro_de_produtos import listar_produtos, carregar_produtos,salvar_produtos
+from utilits import aguardar, limpar_tela
 
 arquivo = "produtos.json"
 
-def limpar_tela():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 def adicionar_quantidade_prod():
     produtos = carregar_produtos()
@@ -51,12 +50,12 @@ def adicionar_quantidade_prod():
             entrada = input("Deseja adicionar mais algum produto? (s/n): ").strip().lower()
 
             if entrada == "s":
-                time.sleep(2)
+                aguardar(2)
                 limpar_tela()
                 break
             elif entrada == "n":
                 print("Saindo...\n")
-                time.sleep(2)
+                aguardar(2)
                 limpar_tela()
                 return
             else:
@@ -107,12 +106,12 @@ def retirada_produtos():
             entrada = input("Deseja retirar mais algum produto? (s/n): ").strip().lower()
 
             if entrada == "s":
-                time.sleep(2)
+                aguardar(2)
                 limpar_tela()
                 break
             elif entrada == "n":
                 print("Saindo...\n")
-                time.sleep(2)
+                aguardar(2)
                 limpar_tela()
                 return
             else:

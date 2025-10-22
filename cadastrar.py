@@ -6,7 +6,7 @@ import json
 import re
 import random
 import sys
-
+from utilits import aguardar,limpar_tela
 import smtplib
 from email.message import EmailMessage
 import mimetypes
@@ -28,14 +28,7 @@ def code_verificação():
       return str(random.randint(100000, 999999))
 
 
-aguardar = time.sleep 
 
-def limpar_tela():
-    """Limpa o terminal a cada instante que foi determinado"""
-    if os.name == 'nt': 
-        os.system('cls')
-    else:  
-        os.system('clear')
 
 def menu():
     """O MENU INICIAL DA HIVESTOCK"""

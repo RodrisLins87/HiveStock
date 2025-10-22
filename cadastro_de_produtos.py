@@ -2,11 +2,11 @@ import json
 import time
 import os
 from datetime import datetime
+from utilits import aguardar,limpar_tela
 
 arquivo = "produtos.json"
 
-def limpar_tela():
-    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 
 
@@ -51,7 +51,7 @@ def cadastro_produtos():
         for produto in produtos:
             if produto["NF"] == nota_fiscal and produto["Nome"] == nome_produto:
                 print("Essa produto já foi cadastrado")
-                time.sleep(2)
+                aguardar(2)
                 limpar_tela()
                 return
         produto = {"Tipo": tipo, "Nome" : nome_produto, "Quantidade": quantidade, "NF" : nota_fiscal, "data_inclusao" : data_atual, "mes_ano":mes_ano}
@@ -64,12 +64,12 @@ def cadastro_produtos():
             entrada = input("Deseja cadastrar mais um produto? (s/n): ").strip().lower()
 
             if entrada == "s":
-                time.sleep(2)
+                aguardar(2)
                 limpar_tela()
                 break
             elif entrada == "n":
                 print("Encerrando cadastro de produtos...\n")
-                time.sleep(2)
+                aguardar(2)
                 limpar_tela()
                 return
             else:
@@ -79,7 +79,7 @@ def listar_produtos_menu():
     produtos = carregar_produtos()
     if not produtos:                                                                                                                        #Lista todos os produtas já cadastrados
         print("Não existem produtos cadastrados")
-        time.sleep(2)
+        aguardar(2)
         limpar_tela()
         return                                                                              
     
@@ -95,7 +95,7 @@ def listar_produtos():
     produtos = carregar_produtos()
     if not produtos:                                                                                                                        #Lista todos os produtas já cadastrados
         print("Não existem produtos cadastrados")
-        time.sleep(2)
+        aguardar(2)
         limpar_tela()
         return                                                                              
     
@@ -134,14 +134,14 @@ def listar_produtos_periodos():
 
         mes_int = int(mes)
 
-        time.sleep(2)
+        aguardar(2)
         limpar_tela()
         if mes_int < 1 or mes_int > 12:                                                                     # Verifica se o número está dentro do intervalo válido        
             print("⚠️ Mês inválido! Digite um número entre 1 e 12.")
             continue
 
         print("Carregando produtos...")
-        time.sleep(2)
+        aguardar(2)
         limpar_tela()
 
         mes = str(mes_int).zfill(2)                                                                         # converte para str e converte para formato 2 dígitos (01, 02, ...)
@@ -229,12 +229,12 @@ def atualizar_produtos():
                 entrada = input("Deseja cadastrar mais um produto? (s/n): ").strip().lower()
 
                 if entrada == "s":
-                    time.sleep(2)
+                    aguardar(2)
                     limpar_tela()
                     break
                 elif entrada == "n":
                     print("Saindo...\n")
-                    time.sleep(2)
+                    aguardar(2)
                     limpar_tela()
                     return
                 else:
@@ -265,7 +265,7 @@ def excluir_produto():
     else:
         produtos.pop(indice)
         print("Produto removido com sucesso")
-        time.sleep(2)
+        aguardar(2)
         limpar_tela()
     salvar_produtos(produtos)
     listar_produtos()

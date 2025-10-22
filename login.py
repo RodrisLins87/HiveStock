@@ -1,10 +1,10 @@
 from cadastrar import email_valido
 from cadastrar import code_verificação
-from cadastrar import limpar_tela
+from utilits import limpar_tela
 from cadastrar import menu
 from cadastrar import menu_usuario
 from cadastrar import cadastro_usuario
-from cadastrar import aguardar
+from utilits import aguardar
 import os
 import json
 import sys

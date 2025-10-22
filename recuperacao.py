@@ -3,8 +3,8 @@ import sys
 from cadastrar import email_valido
 from cadastrar import limpar_tela
 from cadastrar import code_verificação
-from cadastrar import limpar_tela
-from cadastrar import aguardar
+from utilits import limpar_tela
+from utilits import aguardar
 import smtplib
 from email.message import EmailMessage
 import mimetypes

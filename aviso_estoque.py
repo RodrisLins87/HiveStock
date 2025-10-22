@@ -3,9 +3,7 @@ import time
 import os
 from datetime import datetime
 from cadastro_de_produtos import listar_produtos, carregar_produtos,salvar_produtos
-
-def limpar_tela():
-    os.system('cls' if os.name == 'nt' else 'clear')
+from utilits import aguardar, limpar_tela
 
 def monitoramento():
     produtos = carregar_produtos()
@@ -27,7 +25,7 @@ def monitoramento():
     entrada = input("Pressione ENTER para sair")
     if entrada == "":
         print("Saindo...")
-        time.sleep(2)
+        aguardar(2)
         limpar_tela()
         return
     
