@@ -6,6 +6,12 @@
             "matricula": "12345678912",
             "email": "thymurilo123@gmail.com",
             "senha": "Thyago@100"
+        },
+        {
+            "nome": "Bruno Lins",
+            "matricula": "20250016866",
+            "email": "rodrigibruno14@gmail.com",
+            "senha": "Bruno151209@"
         }
     ]
 }

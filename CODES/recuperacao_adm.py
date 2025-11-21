@@ -1,30 +1,34 @@
-import json 
-import sys 
-from cadastrar import email_valido
-from cadastrar import limpar_tela
-from cadastrar import code_verificação
-from utilits import limpar_tela
-from utilits import aguardar
-import smtplib
-from email.message import EmailMessage
-import mimetypes
+import json #biblioteca para gerenciar dados no Json 
+import sys #bibilioteca de sistema, utilizada comumente para fechar totalmente o programa
+from CODES.cadastrar import email_valido #Importação da função declarada 
+from CODES.utilits import limpar_tela #Importação da função declarada 
+from CODES.cadastrar import code_verificação #Importação da função declarada 
+from CODES.cadastrar import limpar_tela #Importação da função declarada 
+from CODES.utilits import aguardar #Importação da função declarada 
+import smtplib #Biblioteca para enviar email (conectar a servido e automatizar )
+from email.message import EmailMessage #biblioteca para criar a estrutura de texto 
+import mimetypes #biblioteca para gerenciar o tipo de arquivo, caso queira anexá-lo em uma mensagem de email 
 
-SIM_NAO=["1","2"]
+
+# Listas para determinar as possibilidades, uma trativa de erro, para restringir as escolhas do usuário 
+
+SIM_NAO=["1","2"] 
 caracteres_especiais = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', ',', '.', '?', ':', '"', '{', '}', '|', '<', '>']
 
-ARQUIVO_JSON1 = "dados_FUNCIONARIO.json"
+ARQUIVO_JSON2 = "dados_ADM.json" #Cria uma variável, e nomeia com o nome do arquivo jsopn que vai ser utilizado 
 
-def buscar_usuario_por_email(email):
+def buscar_usuario_por_email_ADM(email):
     try:
-        with open(ARQUIVO_JSON1, "r", encoding="utf-8") as f:
-            dados = json.load(f)
-            usuarios = dados["usuarios"]  # acessa a lista dentro da chave
-    except FileNotFoundError:
+        with open(ARQUIVO_JSON2, "r", encoding="utf-8") as f: #Abre e fecha o arquivo Json em modo leitura
+            dados = json.load(f) #Lê o arquivo modo objetos, ou seja, carrega os dados do arquivo 
+            usuarios = dados["usuarios"]  
+
+    except FileNotFoundError: #Exceção, caso não exista nenhum usuário cadastrado ainda
         print("Nenhum usuário cadastrado ainda.")
         return None
 
-    for usuario in usuarios:
-        # ignora dicionários vazios
+    for usuario in usuarios: # Percorre o dicionário, e é nesse bloco que o retorno vai depender de existir ou não um usuário cadastrado 
+        
         if not usuario or "email" not in usuario:
             continue
 
@@ -33,40 +37,43 @@ def buscar_usuario_por_email(email):
 
     return None
 
-def recuperar_senha():
+def recuperar_senha_ADM(): 
+    """Função para recuperar a senha do usuário administrativo"""
     print("Vamos recuperar o seu acesso!\n")
-    while 1>0:
+    while 1>0: #Cria um loop, que só quebra com o alcançe de determinada condição
+
         email_recuperacao=input("Qual informe o email cadastrado? ")
-        if not email_recuperacao:
+        if not email_recuperacao: #Esse bloco garante que o espaço seja preenchido 
             print("O campo precisa ser preenchido\n")
             aguardar(2)
             limpar_tela()
             continue
-        elif not email_valido(email_recuperacao):
-            print("Email não é válido!")
+        elif not email_valido(email_recuperacao): #Com o auxilio da biblioteca re, ele verifica se a estrutura condiz com a de um email 
+            print("Email não é válido!") 
             aguardar(2)
             limpar_tela()
             continue
 
-        elif not buscar_usuario_por_email(email_recuperacao):
+        elif not buscar_usuario_por_email_ADM(email_recuperacao): #Busca o email no arquivo Json, caso não ache, ele quebra o loop 
             print("Email não cadastrado!")
             aguardar(2)
             limpar_tela
             break
         
-        else:
+        else: #Caso tudo anteriormente seja atendido, ele continua para verificação 
             
-            codigo=code_verificação()
-            remetente="hivestock.logistica@gmail.com"
+            codigo=code_verificação() #função declarada com o auxilio da biblioteca random 
+            remetente="hivestock.logistica@gmail.com" 
             destinatario={email_recuperacao}
             assunto_email="Código de verificação"
-            mensagem_email=f"""
+            mensagem_email=f""" 
             Olá, Seja Bem-vindo a HiveStock!
                 O seu código de recuperação é :
                         {codigo}
 
             """
-            senha_email="inzq mgbn hhdz ewqg"
+            #mensagem que 
+            senha_email="inzq mgbn hhdz ewqg" 
 
             msg=EmailMessage()
             msg['From']=remetente
@@ -130,7 +137,7 @@ def recuperar_senha():
 
                         else:
                              # Abre o arquivo e carrega todos os usuários
-                            with open(ARQUIVO_JSON1, "r", encoding="utf-8") as f:
+                            with open(ARQUIVO_JSON2, "r", encoding="utf-8") as f:
                                 dados = json.load(f)
                                 usuarios = dados["usuarios"]
 
@@ -141,17 +148,19 @@ def recuperar_senha():
                                     break
 
                             # Salva novamente o JSON atualizado
-                            with open(ARQUIVO_JSON1, "w", encoding="utf-8") as f:
+                            with open(ARQUIVO_JSON2, "w", encoding="utf-8") as f:
                                 json.dump(dados, f, indent=4, ensure_ascii=False)
 
                             print("Senha atualizada com sucesso!")
                             aguardar(2)
                             limpar_tela()
-                            break
-
+                            return
 
 
 
         
+
+          
+
 
     

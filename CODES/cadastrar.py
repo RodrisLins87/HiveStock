@@ -6,7 +6,7 @@ import json
 import re
 import random
 import sys
-from utilits import aguardar,limpar_tela
+from CODES.utilits import aguardar,limpar_tela
 import smtplib
 from email.message import EmailMessage
 import mimetypes

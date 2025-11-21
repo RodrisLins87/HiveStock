@@ -1,16 +1,16 @@
-from cadastrar import email_valido
-from cadastrar import code_verificação
-from utilits import limpar_tela
-from cadastrar import menu
-from cadastrar import menu_usuario
-from cadastrar import cadastro_usuario
-from utilits import aguardar
+from CODES.cadastrar import email_valido
+from CODES.cadastrar import code_verificação
+from CODES.utilits import limpar_tela
+from CODES.cadastrar import menu
+from CODES.cadastrar import menu_usuario
+from CODES.cadastrar import cadastro_usuario
+from CODES.utilits import aguardar
 import os
 import json
 import sys
-from cadastro_de_produtos import cadastro_produtos,atualizar_produtos,excluir_produto,listar_produtos_menu,listar_produtos_periodos
-from alteracao_quantidade import adicionar_quantidade_prod, retirada_produtos
-from aviso_estoque import monitoramento
+from CODES.cadastro_de_produtos import cadastro_produtos,atualizar_produtos,excluir_produto,listar_produtos_menu,listar_produtos_periodos
+from CODES.alteracao_quantidade import adicionar_quantidade_prod, retirada_produtos
+from CODES.aviso_estoque import monitoramento
 
 def fazer_login():
     caminhos_login=["1","2","3","4"]

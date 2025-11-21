@@ -1,13 +1,13 @@
-from cadastrar import menu
-from cadastrar import menu_usuario
-from cadastrar import cadastro_usuario
-from utilits import limpar_tela
-from utilits import aguardar
-from login import fazer_login
-from recuperacao import recuperar_senha
-from recuperacao import buscar_usuario_por_email
-from recuperacao_adm import buscar_usuario_por_email_ADM
-from recuperacao_adm import recuperar_senha_ADM
+from CODES.cadastrar import menu
+from CODES.cadastrar import menu_usuario
+from CODES.cadastrar import cadastro_usuario
+from CODES.utilits import limpar_tela
+from CODES.utilits import aguardar
+from CODES.login import fazer_login
+from CODES.recuperacao import recuperar_senha
+from CODES.recuperacao import buscar_usuario_por_email
+from CODES.recuperacao_adm import buscar_usuario_por_email_ADM
+from CODES.recuperacao_adm import recuperar_senha_ADM
 
 
 

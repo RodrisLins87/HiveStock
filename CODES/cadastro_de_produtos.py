@@ -2,7 +2,7 @@ import json
 import time
 import os
 from datetime import datetime
-from utilits import aguardar,limpar_tela
+from CODES.utilits import aguardar,limpar_tela
 
 arquivo = "produtos.json"
 
