@@ -1,0 +1,20 @@
+[
+    {
+        "codigo": 9999,
+        "nome": "Produto-Teste",
+        "categoria": "Teste",
+        "quantidade": 5,
+        "nf": "NF-TESTE-9999",
+        "data": "26/11/2025",
+        "mes_ano": "11-2025"
+    },
+    {
+        "codigo": 9999,
+        "nome": "Produto-Teste",
+        "categoria": "Teste",
+        "quantidade": 5,
+        "nf": "NF-TESTE-9999",
+        "data": "26/11/2025",
+        "mes_ano": "11-2025"
+    }
+]

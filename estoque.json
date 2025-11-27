@@ -1,0 +1,47 @@
+[
+    {
+        "codigo": 1,
+        "nome": "Mouse Gamer",
+        "categoria": "Perif\u00e9rico",
+        "quantidade": 10,
+        "nf": "123456",
+        "data": "25/11/2024",
+        "mes_ano": "11-2024"
+    },
+    {
+        "codigo": 1,
+        "nome": "Mouse Gamer",
+        "categoria": "Perif\u00e9rico",
+        "quantidade": 10,
+        "nf": "123456",
+        "data": "25/11/2024",
+        "mes_ano": "11-2024"
+    },
+    {
+        "codigo": 1,
+        "nome": "Mouse Gamer",
+        "categoria": "Perif\u00e9rico",
+        "quantidade": 10,
+        "nf": "123456",
+        "data": "25/11/2024",
+        "mes_ano": "11-2024"
+    },
+    {
+        "codigo": 12,
+        "nome": "dsasd",
+        "categoria": "sadas",
+        "quantidade": 23,
+        "nf": "1234",
+        "data": "26/11/2025",
+        "mes_ano": "11-2025"
+    },
+    {
+        "codigo": 12,
+        "nome": "dsasd",
+        "categoria": "sadas",
+        "quantidade": 23,
+        "nf": "1234",
+        "data": "26/11/2025",
+        "mes_ano": "11-2025"
+    }
+]
