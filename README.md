@@ -47,7 +47,6 @@ Ferramenta de gestão simples, intuitiva e didática
  
  👤 Análise por funcionário
  
- 📈 Visualização em gráficos e relatórios
  
 
  # HiveStock
