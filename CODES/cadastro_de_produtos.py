@@ -187,62 +187,86 @@ def atualizar_produtos():
 
         try:
             indice = int(input("Digite o número do produto que deseja atualizar: ")) - 1                #O usuário colocará o indice que a aparecer na lista, porém o python lê o primeiro com 0
-            if indice < 0 or indice >= len(produtos):                                                   #Vê se o usuário coloco um indice válido
+            if indice < 0 or indice >= len(produtos):     
+                limpar_tela()                                              #Vê se o usuário coloco um indice válido
                 print("Índice inválido.")
-                return
+                continue
         except ValueError:
+            limpar_tela()
             print("Entrada inválida. Digite um número.")
-            return
+            continue
 
-        print("""
-    Qual campo você deseja alterar?
-    1 - Tipo
-    2 - Nome
-    3 - Quantidade
-    4 - Nota Fiscal
-    0 - Sair
-    """)
-
-        try:
-            campo = int(input("Escolha uma opção (1-4): "))
-        except ValueError:
-            print("Entrada inválida.")
-            return
-
-        if campo == 1:
-            novo_valor = input("Digite o novo tipo: ")
-            produtos[indice]["Tipo"] = novo_valor                               #armazena o novo valor na lista de produto, pega o vai diretamente no indice que o user digitou e muda some o campo escolhido
-        elif campo == 2:
-            novo_valor = input("Digite o novo nome: ")
-            produtos[indice]["Nome"] = novo_valor
-        elif campo == 3:
-            try:
-                novo_valor = int(input("Digite a nova quantidade: "))
-                produtos[indice]["Quantidade"] = novo_valor
-            except ValueError:
-                print("Quantidade inválida.")
-                return
-        elif campo == 4:
-            try:
-                novo_valor = int(input("Digite a nova Nota Fiscal: "))
-                produtos[indice]["NF"] = novo_valor
-            except ValueError:
-                print("Nota fiscal inválida.")
-                return
-        elif campo == 0:
-            return
-        else:
-            print("Opção inválida.")
-            return
-
-        salvar_produtos(produtos)
-        print("Produto atualizado com sucesso!")
-        listar_produtos()
+        aguardar(2)
+        limpar_tela()
 
         while True:
-                entrada = input("Deseja cadastrar mais um produto? (s/n): ").strip().lower()
+            print("""
+        Qual campo você deseja alterar?
+        1 - Tipo
+        2 - Nome
+        3 - Quantidade
+        4 - Nota Fiscal
+        0 - Sair
+        """)
+
+        
+            try:
+                campo = int(input("Escolha uma opção (1-4): "))
+                if campo < 0 or campo > 4:
+                    limpar_tela()
+                    print("Opção inválida. escolha um numero entre 0 e 4.")
+                    continue
+            except ValueError:
+                limpar_tela()
+                print("Entrada inválida. Somente números são permitidos.")
+                continue
+
+            if campo == 1:
+                novo_valor = input("Digite o novo tipo: ")
+                produtos[indice]["Tipo"] = novo_valor                               #armazena o novo valor na lista de produto, pega o vai diretamente no indice que o user digitou e muda some o campo escolhido
+            elif campo == 2:
+                novo_valor = input("Digite o novo nome: ")
+                produtos[indice]["Nome"] = novo_valor
+            elif campo == 3:
+                try:
+                    novo_valor = int(input("Digite a nova quantidade: "))
+                except ValueError:
+                    print("Quantidade inválida. Digite apenas números.")
+                    aguardar(2)
+                    limpar_tela()
+                    continue
+                if novo_valor < 0 or novo_valor > 500:
+                    print("Digite uma quantidade válida entre 0 e 500.")
+                    aguardar(2)
+                    limpar_tela()
+                    continue
+                else:    
+                    produtos[indice]["Quantidade"] = novo_valor
+                
+            elif campo == 4:
+                try:
+                    novo_valor = int(input("Digite a nova Nota Fiscal: "))
+                    produtos[indice]["NF"] = novo_valor
+                except ValueError:
+                    print("Nota fiscal inválida.")
+                    return
+            elif campo == 0:
+                return
+            else:
+                print("Opção inválida.")
+                return
+
+            aguardar(2)
+            limpar_tela()
+            salvar_produtos(produtos)
+            print("Produto atualizado com sucesso!")
+            listar_produtos()
+
+            while True:
+                entrada = input("Deseja atualizar mais algum periodo? (s/n): ").strip().lower()
 
                 if entrada == "s":
+                    sair = True
                     aguardar(2)
                     limpar_tela()
                     break
@@ -252,9 +276,13 @@ def atualizar_produtos():
                     limpar_tela()
                     return
                 else:
-                    print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
                     limpar_tela()
+                    print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
                     continue
+
+            if sair:
+                sair = False
+                break
 
     
 def excluir_produto():
@@ -293,6 +321,6 @@ def excluir_produto():
 
 #cadastro_produtos()
 #listar_produtos()
-listar_produtos_periodos()
-#atualizar_produtos()
+#listar_produtos_periodos()
+atualizar_produtos()
 #excluir_produto()
