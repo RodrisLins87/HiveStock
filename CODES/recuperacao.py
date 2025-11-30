@@ -147,7 +147,7 @@ def recuperar_senha():
                             print("Senha atualizada com sucesso!")
                             aguardar(2)
                             limpar_tela()
-                            break
+                            return
 
 
 
