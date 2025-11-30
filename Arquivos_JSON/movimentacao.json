@@ -1,0 +1,14 @@
+[
+    {
+        "nome": "sda",
+        "quantidade": 12,
+        "tipo": "saida",
+        "data": "30/11/2025 00:20"
+    },
+    {
+        "nome": "dsfadf",
+        "quantidade": 34,
+        "tipo": "saida",
+        "data": "30/11/2025 00:20"
+    }
+]

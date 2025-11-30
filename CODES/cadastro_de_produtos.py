@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime
 from utilits import aguardar,limpar_tela, arquivo
-from produtoTeste import Produto
+from produto import Produto
 
 
 def carregar_produtos():
@@ -322,5 +322,5 @@ def excluir_produto():
 #cadastro_produtos()
 #listar_produtos()
 #listar_produtos_periodos()
-atualizar_produtos()
+#atualizar_produtos()
 #excluir_produto()

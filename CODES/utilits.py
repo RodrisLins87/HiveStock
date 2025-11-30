@@ -21,3 +21,5 @@ PASTA_JSON = os.path.join(ROOT, "Arquivos_JSON")
 
 # Caminho final do arquivo
 arquivo = os.path.join(PASTA_JSON, "estoque.json")
+
+arquivo_mov = os.path.join(PASTA_JSON, "movimentacao.json")

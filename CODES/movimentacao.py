@@ -1,5 +1,26 @@
-from utilits import aguardar,limpar_tela
+from utilits import aguardar,limpar_tela, arquivo_mov
 from cadastro_de_produtos import listar_produtos, carregar_produtos,salvar_produtos
+import json
+from datetime import datetime
+
+
+
+def registrar_movimentacao(nome, quantidade, tipo):
+    try:
+        with open(arquivo_mov, "r") as f:
+            movs = json.load(f)
+    except:
+        movs = []
+
+    movs.append({
+        "nome": nome,
+        "quantidade": quantidade,
+        "tipo": tipo,               # "entrada" ou "saida"
+        "data": datetime.now().strftime("%d/%m/%Y %H:%M")
+    })
+
+    with open(arquivo_mov, "w") as f:
+        json.dump(movs, f, indent=4)
 
 
 def adicionar_quantidade_prod():
@@ -53,6 +74,7 @@ def adicionar_quantidade_prod():
         produtos[indice]["Quantidade"] += quantidade                                                                #Soma com a quant antiga
         
         salvar_produtos(produtos)
+        registrar_movimentacao(produtos[indice]["Nome"], quantidade, "Entrada")
         print("Produto atualizado com sucesso!")
         listar_produtos()
         aguardar(2)
@@ -126,15 +148,20 @@ def retirada_produtos():
 
         produtos[indice]["Quantidade"] -= quantidade
 
+        excluiu = False
         if produtos[indice]["Quantidade"] == 0:
             print(f"Foi retirado {quantidade} unidades de {produtos[indice]["Nome"]} do estoque")
+            registrar_movimentacao(produtos[indice]["Nome"], quantidade, "saida")
             produtos.pop(indice)
+            excluiu = True
         else:
             print(f"Foi retirado {quantidade} unidades de {produtos[indice]["Nome"]} do estoque")
 
         salvar_produtos(produtos)
         listar_produtos()
-        
+        if not excluiu:
+            registrar_movimentacao(produtos[indice]["Nome"], quantidade, "saida")
+
         
         aguardar(2)
         
@@ -157,4 +184,4 @@ def retirada_produtos():
                 continue
 
 #adicionar_quantidade_prod()
-#retirada_produtos()movementacao
+#retirada_produtos()
