@@ -1,20 +1,18 @@
 [
     {
-        "codigo": 9999,
-        "nome": "Produto-Teste",
-        "categoria": "Teste",
-        "quantidade": 5,
-        "nf": "NF-TESTE-9999",
-        "data": "26/11/2025",
-        "mes_ano": "11-2025"
+        "Tipo": "dsa",
+        "Nome": "asd",
+        "Quantidade": 23,
+        "NF": 1234,
+        "data_inclusao": "29/11/2025",
+        "mes_ano": "11/2025"
     },
     {
-        "codigo": 9999,
-        "nome": "Produto-Teste",
-        "categoria": "Teste",
-        "quantidade": 5,
-        "nf": "NF-TESTE-9999",
-        "data": "26/11/2025",
-        "mes_ano": "11-2025"
+        "Tipo": "fsgs",
+        "Nome": "asadsa",
+        "Quantidade": 23,
+        "NF": 1234,
+        "data_inclusao": "29/11/2025",
+        "mes_ano": "11/2025"
     }
 ]

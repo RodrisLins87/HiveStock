@@ -9,8 +9,8 @@ import os
 import json
 import sys
 from CODES.cadastro_de_produtos import cadastro_produtos,atualizar_produtos,excluir_produto,listar_produtos_menu,listar_produtos_periodos
-from CODES.alteracao_quantidade import adicionar_quantidade_prod, retirada_produtos
-from CODES.aviso_estoque import monitoramento
+from CODES.movimentacao import adicionar_quantidade_prod, retirada_produtos
+from CODES.monitoramento import monitoramento
 
 def fazer_login():
     caminhos_login=["1","2","3","4"]

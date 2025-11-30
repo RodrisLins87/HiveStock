@@ -1,13 +1,8 @@
 import json
-import time
 import os
 from datetime import datetime
-from CODES.utilits import aguardar,limpar_tela
-
-arquivo = "produtos.json"
-
-
-
+from utilits import aguardar,limpar_tela, arquivo
+from produtoTeste import Produto
 
 
 def carregar_produtos():
@@ -34,6 +29,7 @@ def cadastro_produtos():
     while True:
         tipo = input("Digite o tipo do seu produto: ").strip().lower()
         nome_produto = input("Digite o nome do produto que vai ser cadastrado: ").strip().lower()
+
         while True:
             try:
                 quantidade = int(input("Informe a quantidade: "))
@@ -54,7 +50,10 @@ def cadastro_produtos():
                 aguardar(2)
                 limpar_tela()
                 return
-        produto = {"Tipo": tipo, "Nome" : nome_produto, "Quantidade": quantidade, "NF" : nota_fiscal, "data_inclusao" : data_atual, "mes_ano":mes_ano}
+
+        # ✔ A UNICA LINHA ALTERADA
+        produto = Produto(tipo, nome_produto, quantidade, nota_fiscal, data_atual, mes_ano).to_dict()
+
         produtos = carregar_produtos()
         produtos.append(produto)
         salvar_produtos(produtos)
@@ -68,12 +67,14 @@ def cadastro_produtos():
                 limpar_tela()
                 break
             elif entrada == "n":
-                print("Encerrando cadastro de produtos...\n")
+                print("Saindo...\n")
                 aguardar(2)
                 limpar_tela()
                 return
             else:
+                limpar_tela()
                 print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
+                continue
 
 def listar_produtos_menu():
     produtos = carregar_produtos()
@@ -105,62 +106,75 @@ def listar_produtos():
 def listar_produtos_periodos():
     produtos = carregar_produtos()
 
+    
     if not produtos:
         print("⚠️ Não existem produtos cadastrados.")
         return
 
-    print("""
-          1 - Jan
-          2 - Fev
-          3 - Mar
-          4 - Abr
-          5 - Mai
-          6 - Jun
-          7 - Jul
-          8 - Ago
-          9 - Set
-          10 - Out
-          11 - Nov
-          12 - Dez
-    """)
+    while True:
+        print("""
+            1 - Jan
+            2 - Fev
+            3 - Mar
+            4 - Abr
+            5 - Mai
+            6 - Jun
+            7 - Jul
+            8 - Ago
+            9 - Set
+            10 - Out
+            11 - Nov
+            12 - Dez
+        """)
 
     # --- Tratamento de entrada do mês ---
-    while True:
-        mes = input("Escolha o mês de análise (1 a 12): ").strip()
-
-        if not mes.isdigit():                                                                               # Verifica se a entrada é número
+        try:
+            mes_int = int(input("Escolha o mês de análise (1 a 12): ").strip())
+            if mes_int < 1 or mes_int > 12:
+                limpar_tela()                                                                             # Verifica se a entrada é número
+                print("⚠️ Entrada inválida! Digite apenas números de 1 a 12.")
+                continue
+        except ValueError:
+            limpar_tela()
             print("⚠️ Entrada inválida! Digite apenas números de 1 a 12.")
             continue
 
-        mes_int = int(mes)
-
         aguardar(2)
         limpar_tela()
-        if mes_int < 1 or mes_int > 12:                                                                     # Verifica se o número está dentro do intervalo válido        
-            print("⚠️ Mês inválido! Digite um número entre 1 e 12.")
-            continue
-
+        
         print("Carregando produtos...")
         aguardar(2)
         limpar_tela()
 
         mes = str(mes_int).zfill(2)                                                                         # converte para str e converte para formato 2 dígitos (01, 02, ...)
-        break
+        
 
-    produtos_do_mes = [p for p in produtos if p["mes_ano"] == f"{mes}/2025"]                                # Percorre a lista de produtos, filtrando apenas pelo mês digitado
-    
-    if not produtos_do_mes:                                                                                 # Verifica se existem produtos cadastrados no mês informado    
-        print(f"📅 Não existem produtos cadastrados no período {mes}/2025.")
-        return
+        produtos_do_mes = [p for p in produtos if p["mes_ano"] == f"{mes}/2025"]                                # Percorre a lista de produtos, filtrando apenas pelo mês digitado
+        
+        if not produtos_do_mes:                                                                                 # Verifica se existem produtos cadastrados no mês informado    
+            print(f"📅 Não existem produtos cadastrados no período {mes}/2025.")
+            
+        else:
+            print(f"\n📦 Produtos cadastrados em {mes}/2025:\n")
+            for i, a in enumerate(produtos_do_mes, start=1):
+                print(f"{i}. Tipo: {a['Tipo']} | Nome: {a['Nome']} | Quant: {a['Quantidade']} | Nota fiscal: {a['NF']}")
+            
+        while True:
+                entrada = input("Deseja verificar mais algum periodo? (s/n): ").strip().lower()
 
-    print(f"\n📦 Produtos cadastrados em {mes}/2025:\n")
-    for i, a in enumerate(produtos_do_mes, start=1):
-        print(f"{i}. Tipo: {a['Tipo']} | Nome: {a['Nome']} | Quant: {a['Quantidade']} | Nota fiscal: {a['NF']}")
-    print("Pressione ENTER para sair")
-    entrada = input()
-    if entrada == "":
-        print("Saindo...")
-        return
+                if entrada == "s":
+                    aguardar(2)
+                    limpar_tela()
+                    break
+                elif entrada == "n":
+                    print("Saindo...\n")
+                    aguardar(2)
+                    limpar_tela()
+                    return
+                else:
+                    limpar_tela()
+                    print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
+                    continue
 
 def atualizar_produtos():
     produtos = carregar_produtos()
@@ -239,7 +253,9 @@ def atualizar_produtos():
                     return
                 else:
                     print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
-        return
+                    limpar_tela()
+                    continue
+
     
 def excluir_produto():
     produtos = carregar_produtos()
@@ -277,6 +293,6 @@ def excluir_produto():
 
 #cadastro_produtos()
 #listar_produtos()
-#listar_produtos_periodos()
+listar_produtos_periodos()
 #atualizar_produtos()
 #excluir_produto()
