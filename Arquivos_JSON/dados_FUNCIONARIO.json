@@ -6,6 +6,12 @@
             "matricula": "1234567890",
             "email": "brsl@discente.ifpe.edu.br",
             "senha": "Recife16@"
+        },
+        {
+            "nome": "Jorge",
+            "matricula": "12345678987",
+            "email": "thyagomurilo48@gmail.com",
+            "senha": "Thyago@2006"
         }
     ]
-}   
+}

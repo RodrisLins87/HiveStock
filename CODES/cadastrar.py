@@ -250,9 +250,9 @@ def cadastro_usuario():
 
         # Define o arquivo JSON correto
         if tipo_usuário == "1":
-            arquivo_json = "dados_ADM.json"
+            arquivo_json = os.path.join("Arquivos_JSON", "dados_ADM.json")
         elif tipo_usuário == "2":
-            arquivo_json = "dados_FUNCIONARIO.json"
+            arquivo_json = os.path.join("Arquivos_JSON", "dados_FUNCIONARIO.json")
 
         # Carrega dados do JSON ou cria vazio se não existir
         if os.path.exists(arquivo_json):

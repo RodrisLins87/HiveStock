@@ -11,12 +11,14 @@ import sys
 from CODES.cadastro_de_produtos import cadastro_produtos,atualizar_produtos,excluir_produto,listar_produtos_menu,listar_produtos_periodos
 from CODES.movimentacao import adicionar_quantidade_prod, retirada_produtos
 from CODES.monitoramento import monitoramento
+from CODES.relatorio_semana import produto_mais_usado_semana
 
 def fazer_login():
     caminhos_login=["1","2","3","4"]
     tentativas=3
 
-    possibilidades_menu_login=["1","2"]
+    possibilidade_decisao_funcionario=["1","2","3"]
+    possibilidades_menu_login=["1","2",]
     print("Vamos fazer o login!")
     aguardar(1)
     limpar_tela()
@@ -44,9 +46,9 @@ def fazer_login():
 
         
         if tipo_usuario_login == "1":
-            ARQUIVO_JSON = "dados_ADM.json"
+            ARQUIVO_JSON = os.path.join("Arquivos_JSON", "dados_ADM.json")
         elif tipo_usuario_login == "2":
-            ARQUIVO_JSON = "dados_FUNCIONARIO.json"
+            ARQUIVO_JSON = os.path.join("Arquivos_JSON", "dados_FUNCIONARIO.json")
 
         
         if not os.path.exists(ARQUIVO_JSON):
@@ -82,6 +84,7 @@ def fazer_login():
                     continue
 
                 elif escolha_caminho=="1":
+                    limpar_tela()
                     print("Nome:")
                     print(usuario_encontrado['nome'])
                     print("Matrícula:")
@@ -97,6 +100,7 @@ def fazer_login():
                         
 
                 elif  escolha_caminho=="2":
+                    limpar_tela()
                     print("[1] SIM\n[2] NÃO")
                     while 1>0:
                         certeza=input("Tem certeza que quer excluir o perfil? ")
@@ -139,21 +143,23 @@ def fazer_login():
                     aguardar(3)
                     limpar_tela()
                     while 1>0:
-                        possibilidade_decisao=["1","2","3","4","5","6","7"]
-                        print("[1] CADASTRAR PRODUTO\n[2] VISUALIZAR ESTOQUE\n[3] ATUALIZAR PRODUTOS\n[4] EXCLUIR PRODUTOS\n[5] ADICIONAR QUANTIDADE\n[6] MONITORAMENTO\n [7] SAIR")
+                        possibilidade_decisao_adm=["1","2","3","4","5","6","7", "8"]
+                        print("[1] CADASTRAR PRODUTO\n[2] VISUALIZAR ESTOQUE\n[3] ATUALIZAR PRODUTOS\n[4] EXCLUIR PRODUTOS\n[5] ADICIONAR QUANTIDADE\n[6] MONITORAMENTO\n[7] RELATORIO_SEMANA\n[8] SAIR")
                         decisao=input("Selecione o que deseja: ")
-                        if not decisao in possibilidade_decisao:
+                        if not decisao in possibilidade_decisao_adm:
                             print("NÃO CONFERE")
                             aguardar(1)
                             limpar_tela
                             continue
                         elif decisao=="1":
+                            limpar_tela()
                             cadastro_produtos()
                             aguardar(2)
-                            limpar_tela
+                            limpar_tela()
                             
                         elif decisao=="2":
                             while 1>0:
+                                limpar_tela()
                                 print("[1] VISUALIZAR ESTOQUE UNIVERSAL\n[2] VISUALIZAR ESTOQUE POR PERÍODOS\n")
                                 possibilidade_visualizar=input("Selecione o que deseja: ")
                                 if not possibilidade_visualizar in possibilidades_menu_login:
@@ -162,40 +168,55 @@ def fazer_login():
                                     limpar_tela()
                                     continue
                                 elif possibilidade_visualizar=="1":
+                                    limpar_tela()
                                     listar_produtos_menu()
                                     aguardar(3)
                                     limpar_tela()
                                     break 
                                 elif possibilidade_visualizar=="2":
+                                    limpar_tela()
                                     listar_produtos_periodos()
                                     aguardar(3)
                                     limpar_tela()
                                     break
 
                         elif decisao=="3":
+                            limpar_tela()
                             atualizar_produtos()
                             aguardar(2)
                             limpar_tela()
                             
 
                         elif decisao=="4":
+                            limpar_tela()
                             excluir_produto()
                             aguardar(2)
                             limpar_tela()
                             
 
                         elif decisao=="5":
+                            limpar_tela()
                             adicionar_quantidade_prod()
                             aguardar(2)
                             limpar_tela()
 
                         elif decisao=="6":
+                            limpar_tela()   
                             monitoramento()
                             aguardar(2)
                             limpar_tela()
 
                         elif decisao=="7":
-                            return
+                            limpar_tela()
+                            produto_mais_usado_semana()
+                            aguardar(2)
+                            limpar_tela()
+
+                        elif decisao=="8":
+                            print("Saindo")
+                            aguardar(2)
+                            limpar_tela()
+                            break
                             
 
                       
@@ -205,9 +226,9 @@ def fazer_login():
                     aguardar(3)
                     limpar_tela()
                     while 1>0:
-                        print("[1] VISUALIZAR PRODUTOS\n[2]RETIRAR QUANTIDADE\n")
+                        print("[1] VISUALIZAR PRODUTOS\n[2] RETIRAR QUANTIDADE\n[3] SAIR")
                         escolha_funcionario=input("Selecione o que deseja: ")
-                        if not escolha_funcionario in possibilidades_menu_login:
+                        if not escolha_funcionario in possibilidade_decisao_funcionario:
                             print("NÃO É VÁLIDO!")
                             aguardar(3)
                             limpar_tela()
@@ -215,8 +236,9 @@ def fazer_login():
 
                         elif escolha_funcionario=="1":
                             while 1>0:
+                                limpar_tela()
                                 alternativas_visualizar_funcionario=["1","2","3"]
-                                print("[1] VISUALIZAR TODOS OS PRODUTOS\n[2] VISUALIZAR POR PERÍODOS\n [3] SAIR")
+                                print("[1] VISUALIZAR TODOS OS PRODUTOS\n[2] VISUALIZAR POR PERÍODOS\n[3] SAIR")
                                 escolha_visualizar=input("Selecione o que deseja: ")
                                 if not escolha_visualizar in alternativas_visualizar_funcionario:
                                     print("NÃO CONFERE!")
@@ -224,30 +246,38 @@ def fazer_login():
                                     limpar_tela()
                                     continue
                                 elif escolha_visualizar=="1":
+                                    limpar_tela()
                                     listar_produtos_menu()
                                     aguardar(3)
                                     limpar_tela()
                                     
                                     
                                 elif escolha_visualizar=="2":
+                                    limpar_tela()
                                     listar_produtos_periodos()
                                     aguardar(3)
                                     limpar_tela()
                                     
 
                                 elif escolha_visualizar=="3":
-                                    return
+                                    aguardar(2)
+                                    limpar_tela()
+                                    break
                                     
 
                         elif escolha_funcionario=="2":
+                            limpar_tela()
                             retirada_produtos()
                             aguardar(3)
                             limpar_tela()
 
                         
 
-                        elif escolha_funcionario=="4":
-                            return
+                        elif escolha_funcionario=="3":
+                            print("Saindo...")
+                            aguardar(2)
+                            limpar_tela()
+                            break
 
 
                 elif escolha_caminho=="4":

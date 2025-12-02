@@ -1,6 +1,6 @@
 import json
 from datetime import datetime, timedelta
-from utilits import aguardar,limpar_tela, arquivo_mov   
+from CODES.utilits import limpar_tela, arquivo_mov   
 
 
 def produto_mais_usado_semana():

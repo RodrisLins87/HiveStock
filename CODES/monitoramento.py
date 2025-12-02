@@ -1,5 +1,5 @@
-from utilits import aguardar,limpar_tela
-from cadastro_de_produtos import  carregar_produtos
+from CODES.utilits import aguardar,limpar_tela
+from CODES.cadastro_de_produtos import  carregar_produtos
 
 def monitoramento():
     produtos = carregar_produtos()

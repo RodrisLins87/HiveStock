@@ -1,8 +1,8 @@
 import json
 import os
 from datetime import datetime
-from utilits import aguardar,limpar_tela, arquivo
-from produto import Produto
+from CODES.utilits import aguardar,limpar_tela, arquivo
+from CODES.produto import Produto
 
 
 def carregar_produtos():
@@ -35,14 +35,14 @@ def cadastro_produtos():
                 quantidade = int(input("Informe a quantidade: "))
                 break
             except ValueError:
-                print("Digite um valor válido")
+                print("⚠️ Digite um valor válido. Apenas números serão aceitos ⚠️")
 
         while True:
             try:
                 nota_fiscal = int(input("Informe a Nota Fiscal: "))
                 break
             except ValueError:
-                print("Digite um valor válido")
+                print("⚠️ Digite um valor válido. Apenas números serão aceitos ⚠️")
 
         for produto in produtos:
             if produto["NF"] == nota_fiscal and produto["Nome"] == nome_produto:
@@ -108,7 +108,7 @@ def listar_produtos_periodos():
 
     
     if not produtos:
-        print("⚠️ Não existem produtos cadastrados.")
+        print("Não existem produtos cadastrados.")
         return
 
     while True:
@@ -132,11 +132,11 @@ def listar_produtos_periodos():
             mes_int = int(input("Escolha o mês de análise (1 a 12): ").strip())
             if mes_int < 1 or mes_int > 12:
                 limpar_tela()                                                                             # Verifica se a entrada é número
-                print("⚠️ Entrada inválida! Digite apenas números de 1 a 12.")
+                print("⚠️ Entrada inválida! Digite apenas números de 1 a 12. ⚠️")
                 continue
         except ValueError:
             limpar_tela()
-            print("⚠️ Entrada inválida! Digite apenas números de 1 a 12.")
+            print("⚠️ Entrada inválida! Digite apenas números de 1 a 12. ⚠️")
             continue
 
         aguardar(2)
@@ -173,7 +173,7 @@ def listar_produtos_periodos():
                     return
                 else:
                     limpar_tela()
-                    print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
+                    print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não. ⚠️")
                     continue
 
 def atualizar_produtos():
@@ -189,11 +189,11 @@ def atualizar_produtos():
             indice = int(input("Digite o número do produto que deseja atualizar: ")) - 1                #O usuário colocará o indice que a aparecer na lista, porém o python lê o primeiro com 0
             if indice < 0 or indice >= len(produtos):     
                 limpar_tela()                                              #Vê se o usuário coloco um indice válido
-                print("Índice inválido.")
+                print("⚠️ Índice inválido. ⚠️")
                 continue
         except ValueError:
             limpar_tela()
-            print("Entrada inválida. Digite um número.")
+            print("⚠️ Entrada inválida. Digite um número. ⚠️")
             continue
 
         aguardar(2)
@@ -214,11 +214,11 @@ def atualizar_produtos():
                 campo = int(input("Escolha uma opção (1-4): "))
                 if campo < 0 or campo > 4:
                     limpar_tela()
-                    print("Opção inválida. escolha um numero entre 0 e 4.")
+                    print("⚠️ Opção inválida. escolha um numero entre 0 e 4. ⚠️")
                     continue
             except ValueError:
                 limpar_tela()
-                print("Entrada inválida. Somente números são permitidos.")
+                print("⚠️ Entrada inválida. Somente números são permitidos. ⚠️")
                 continue
 
             if campo == 1:
@@ -231,12 +231,12 @@ def atualizar_produtos():
                 try:
                     novo_valor = int(input("Digite a nova quantidade: "))
                 except ValueError:
-                    print("Quantidade inválida. Digite apenas números.")
+                    print("⚠️ Quantidade inválida. Digite apenas números. ⚠️")
                     aguardar(2)
                     limpar_tela()
                     continue
                 if novo_valor < 0 or novo_valor > 500:
-                    print("Digite uma quantidade válida entre 0 e 500.")
+                    print("⚠️ Digite uma quantidade válida entre 0 e 500. ⚠️")
                     aguardar(2)
                     limpar_tela()
                     continue
@@ -248,18 +248,18 @@ def atualizar_produtos():
                     novo_valor = int(input("Digite a nova Nota Fiscal: "))
                     produtos[indice]["NF"] = novo_valor
                 except ValueError:
-                    print("Nota fiscal inválida.")
+                    print("⚠️ Nota fiscal inválida. ⚠️")
                     return
             elif campo == 0:
                 return
             else:
-                print("Opção inválida.")
+                print("⚠️ Opção inválida. ⚠️")
                 return
 
             aguardar(2)
             limpar_tela()
             salvar_produtos(produtos)
-            print("Produto atualizado com sucesso!")
+            print("✅ Produto atualizado com sucesso! ✅")
             listar_produtos()
 
             while True:
@@ -297,20 +297,20 @@ def excluir_produto():
             indice = int(input("Digite o indice do produto que você quer excluir")) - 1
             if indice < 0 or indice >= len(produtos):
                 limpar_tela()
-                print("Indice invalido")
+                print("⚠️ Indice invalido ⚠️")
                 continue
         except ValueError:
             limpar_tela()
-            print("Entrada inválida. Digite um número.")
+            print("⚠️ Entrada inválida. Digite um número. ⚠️")
             continue
         
         entrada = input("Prissionando ENTER, confirme a exclusão ou digite qualquer outra coisa para cancelar a operação  ")
         if entrada != '':
-            print("Operação cancelada")
+            print("Operação cancelada ❌")
             return
         else:
             produtos.pop(indice)
-            print("Produto removido com sucesso")
+            print("✅ Produto removido com sucesso ✅")
             aguardar(2)
             limpar_tela()
         salvar_produtos(produtos)
@@ -325,4 +325,4 @@ def excluir_produto():
 #listar_produtos()
 #listar_produtos_periodos()
 #atualizar_produtos()
-excluir_produto()
+#excluir_produto()

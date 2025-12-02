@@ -1,5 +1,5 @@
-from utilits import aguardar,limpar_tela, arquivo_mov
-from cadastro_de_produtos import listar_produtos, carregar_produtos,salvar_produtos
+from CODES.utilits import aguardar,limpar_tela, arquivo_mov
+from CODES.cadastro_de_produtos import listar_produtos, carregar_produtos,salvar_produtos
 import json
 from datetime import datetime
 
