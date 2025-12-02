@@ -1,9 +1,5 @@
-import json
-import time
-import os
-from datetime import datetime
-from CODES.cadastro_de_produtos import listar_produtos, carregar_produtos,salvar_produtos
-from CODES.utilits import aguardar, limpar_tela
+from CODES.utilits import aguardar,limpar_tela
+from CODES.cadastro_de_produtos import  carregar_produtos
 
 def monitoramento():
     produtos = carregar_produtos()
@@ -29,3 +25,4 @@ def monitoramento():
         limpar_tela()
         return
     
+#monitoramento()
