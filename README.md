@@ -46,7 +46,7 @@ Ferramenta de gestão simples, intuitiva e didática
  📦 Análise dos produtos mais/menos usados
  
  👤 Análise por funcionário
- 
+
  
 
  # HiveStock
