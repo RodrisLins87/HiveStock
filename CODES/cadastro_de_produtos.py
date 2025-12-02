@@ -290,37 +290,39 @@ def excluir_produto():
     if not produtos:
         print("Não existem produtos cadastrados")
         return  
-    
-    listar_produtos()
-    
-    try:
-        indice = int(input("Digite o indice do produto que você quer excluir")) - 1
-        if indice < 0 or indice >= len(produtos):
-            print("Indice invalido")
+    while True: 
+        listar_produtos()
+        
+        try:
+            indice = int(input("Digite o indice do produto que você quer excluir")) - 1
+            if indice < 0 or indice >= len(produtos):
+                limpar_tela()
+                print("Indice invalido")
+                continue
+        except ValueError:
+            limpar_tela()
+            print("Entrada inválida. Digite um número.")
+            continue
+        
+        entrada = input("Prissionando ENTER, confirme a exclusão ou digite qualquer outra coisa para cancelar a operação  ")
+        if entrada != '':
+            print("Operação cancelada")
             return
-    except ValueError:
-        print("Entrada inválida. Digite um número.")
-        return
-    
-    entrada = input("Prissionando ENTER, confirme a exclusão ou digite qualquer outra coisa para cancelar a operação  ")
-    if entrada != '':
-        print("Operação cancelada")
-        return
-    else:
-        produtos.pop(indice)
-        print("Produto removido com sucesso")
-        aguardar(2)
-        limpar_tela()
-    salvar_produtos(produtos)
-    listar_produtos()
-    print("Pressione ENTER para sair")
-    entrada = input()
-    if entrada == "":
-        print("Saindo...")
-        return
+        else:
+            produtos.pop(indice)
+            print("Produto removido com sucesso")
+            aguardar(2)
+            limpar_tela()
+        salvar_produtos(produtos)
+        listar_produtos()
+        print("Pressione ENTER para sair")
+        entrada = input()
+        if entrada == "":
+            print("Saindo...")
+            return
 
 #cadastro_produtos()
 #listar_produtos()
 #listar_produtos_periodos()
 #atualizar_produtos()
-#excluir_produto()
+excluir_produto()

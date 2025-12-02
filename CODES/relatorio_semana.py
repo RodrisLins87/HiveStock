@@ -39,4 +39,9 @@ def produto_mais_usado_semana():
     print(f"Produto: {mais_usado}")
     print(f"Quantidade retirada: {uso[mais_usado]}")
 
-produto_mais_usado_semana()
+    entrada = input("\nPressione ENTER para sair...")
+    if entrada == "":
+        limpar_tela()
+        return  
+
+#produto_mais_usado_semana()
