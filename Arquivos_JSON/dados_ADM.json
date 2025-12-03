@@ -12,6 +12,13 @@
             "matricula": "12345678912",
             "email": "thymurilo123@gmail.com",
             "senha": "Thyago@006"
+        },
+        {
+            "nome": "Hugo",
+            "matricula": "20250019897",
+            "email": "brsl@discente.ifpe.edu.br",
+            "senha": "Bruno151209@",
+            "bloco/setor": "DEFS"
         }
     ]
 }

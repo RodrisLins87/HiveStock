@@ -101,6 +101,30 @@ def cadastro_usuario():
 
     aguardar(3)
     limpar_tela()
+    
+    ############################################## SETOR (BLOCO) ############################################################
+    while 1>0:
+        print("[1]DEFS\n[2]DEINFO\n[3]REITORIA\n[4]DEPARTAMENTO DE COMPUTAÇÃO\n[5]OUTRO\n")
+        opcoes_estratificacao=["1","2","3","4","5"]
+        estratificacao=input("Qual o blocos/setor que você atua? ")
+        if not estratificacao in opcoes_estratificacao:
+            print("Valor não é válido!")
+            continue
+        elif estratificacao=="1":
+            estratificacao1="DEFS"
+            break
+        elif estratificacao=="2":
+            estratificacao1="DEINFO"
+            break
+        elif estratificacao=="3":
+            estratificacao1="REITORIA"
+            break
+        elif estratificacao=="4":
+            estratificacao1="DEPARTAMENTO DE COMPUTAÇÃO"
+            break
+        elif estratificacao=="5":
+            estratificacao1=input("Qual o nome do bloco/setor?")
+            break
         
     ############################################## CADASTRO (EMAIL DO USUÁRIO) ##############################################  
 
@@ -245,7 +269,8 @@ def cadastro_usuario():
             "nome": nome_cadastro,
             "matricula": matricula_cadastro,
             "email": email_cadastro,
-            "senha": senha_cadastro
+            "senha": senha_cadastro,
+            "bloco/setor": estratificacao1
         }
 
         # Define o arquivo JSON correto
