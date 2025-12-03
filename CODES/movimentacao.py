@@ -24,60 +24,66 @@ def registrar_movimentacao(nome, quantidade, tipo, nome_usuario):
         json.dump(movs, f, indent=4)
 
 
-def adicionar_quantidade_prod():
+def adicionar_quantidade_prod(nome_usuario):
     produtos = carregar_produtos()
     
     while True:
         if not produtos:
-            print("Não existem produtos cadastrados")
+            print("Não existem produtos cadastrados.")
             return
 
-        listar_produtos()
+        while True:
+            try:
+                listar_produtos()
 
-        try:
-            print("\n(Para cancelar, digite 0)")
-            print("Digite o indice do produto que você deseja adicionar na quantidade do estoque")
-            indice = int(input())-1
-            if indice < -1 or indice > len(produtos)-1:
+                print("\n(Para cancelar, digite 0)")
+                print("Digite o indice do produto que você quer retirar")
+                indice = int(input())-1
+                comprimento = len(produtos)
+                if indice < -1 or indice+1 > comprimento:
+                    limpar_tela()
+                    print(f"⚠️ Digite um valor valido. Não serão aceitos numeros maiores que {comprimento} ⚠️")
+                    continue
+                elif indice == -1:
+                    return
+            except ValueError:
                 limpar_tela()
-                print("⚠️ Digite um valor valido ⚠️")
+                print("⚠️ Digite um valor valido. Só serão aceitos numeros ⚠️")
                 continue
-            elif indice == -1:
-                return
-            
-        except ValueError:
-            limpar_tela()
-            print("⚠️ Digite um valor válido. Apenas números serão aceitos ⚠️")
-            continue
-        
+            break
+
         aguardar(2)
         limpar_tela()
-
-        try:
-            print("\n(Para cancelar, digite 0)")
-            quantidade = int(input("Informe a quantidade desejada: "))
-
-            if quantidade < 0 or quantidade > 500:
-                limpar_tela()
-                print("⚠️ Digite uma quantidade valida. (numeros negativos, nem maiores que 500 serão aceitos.) ⚠️")
-                continue
-            elif quantidade == 0:
-                return
-        except ValueError:
-            limpar_tela()
-            print("⚠️ Digite uma valor valido. Apenas números serão aceitos ⚠️")
-            continue
         
+        while True:
+            try:       
+                print("\n(Para cancelar, digite 0)")
+                quantidade = int(input("Digite a quantidade a ser adicionada\n"))
+                if quantidade < 0 or quantidade > 500:
+                    limpar_tela()
+                    print("⚠️ Digite um valor valido. Numeros negativos não serão aceitos, nem valores superiores a 500 ⚠️")
+                    continue
+                elif quantidade == 0:
+                    return
+            except ValueError:
+                limpar_tela()
+                print("⚠️ Digite um valor valido. Só serão aceitos numeros ⚠️")
+                continue
+            break
+
         print("Aguarde...")
         aguardar(2)
         limpar_tela()
-       
-        produtos[indice]["Quantidade"] += quantidade                                                                #Soma com a quant antiga
-        
+
+        produtos[indice]["Quantidade"] += quantidade
+
+    
         salvar_produtos(produtos)
-        registrar_movimentacao(produtos[indice]["Nome"], quantidade, "Entrada")
-        print("Produto atualizado com sucesso!")
         listar_produtos()
+        
+        registrar_movimentacao(produtos[indice]["Nome"], quantidade, "entrada", nome_usuario)
+
+        
         aguardar(2)
         
 
@@ -95,6 +101,8 @@ def adicionar_quantidade_prod():
                 return
             else:
                 print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
+                limpar_tela()
+                continue
 
 def retirada_produtos(nome_usuario):
     produtos = carregar_produtos()

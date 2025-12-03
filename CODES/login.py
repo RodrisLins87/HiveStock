@@ -198,7 +198,7 @@ def fazer_login():
 
                         elif decisao=="5":
                             limpar_tela()
-                            adicionar_quantidade_prod()
+                            adicionar_quantidade_prod(usuario_encontrado['nome'])
                             aguardar(2)
                             limpar_tela()
 
