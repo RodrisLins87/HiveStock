@@ -52,8 +52,9 @@ def menu_usuario():
 def cadastro_usuario():
 
     while 1>0:
-
+            print("Digite 0 para sair!\n ")
             nome_cadastro=input("Qual o seu nome completo? ").strip()
+            
             if not nome_cadastro:
                 print("O campo precisa ser preenchido! ")
                 aguardar(3)
@@ -63,6 +64,12 @@ def cadastro_usuario():
             elif all(char.isalpha() or char.isspace() for char in nome_cadastro): #GARANTE QUE O NOME SÓ TENHA LETRAS E ESPAÇÕES
                 print("Nome cadastrado!")
                 break 
+
+            elif nome_cadastro=="0":
+                print("Saindo...")
+                aguardar(3)
+                limpar_tela
+                return
             else:
                 print("Nome inválido!")
                 aguardar(3)
@@ -75,13 +82,19 @@ def cadastro_usuario():
     ############################################## CADASTRO (MATRÍCULA DO USUÁRIO) ##############################################
 
     while 1>0:
+            print("Digite 0 para sair!\n ")
             matricula_cadastro=input("Qual a sua matrícula? ").strip()
-
             if not matricula_cadastro:
                 print("O campo precisa ser preenchido!")
                 aguardar(3)
                 limpar_tela()
                 continue
+
+            elif matricula_cadastro=="0":
+                print("Saindo...")
+                aguardar(3)
+                limpar_tela
+                return
 
             elif not len(matricula_cadastro)==11:
                 print("Matrícula não confere. Tem que ter:\n1-11 caracteres\n2-Não conter espaçoes\n3-Não conter Letras ou Caracteres Especiais\n.")
@@ -104,42 +117,68 @@ def cadastro_usuario():
     
     ############################################## SETOR (BLOCO) ############################################################
     while 1>0:
-        print("[1]DEFS\n[2]DEINFO\n[3]REITORIA\n[4]DEPARTAMENTO DE COMPUTAÇÃO\n[5]OUTRO\n")
-        opcoes_estratificacao=["1","2","3","4","5"]
+        print("[1]DEFS\n[2]DEINFO\n[3]REITORIA\n[4]DEPARTAMENTO DE COMPUTAÇÃO\n[5]OUTRO\n[6]SAIR\n")
+        opcoes_estratificacao=["1","2","3","4","5","6"]
         estratificacao=input("Qual o blocos/setor que você atua? ")
         if not estratificacao in opcoes_estratificacao:
             print("Valor não é válido!")
+            aguardar(3)
+            limpar_tela()
             continue
         elif estratificacao=="1":
             estratificacao1="DEFS"
+            aguardar(3)
+            limpar_tela()
             break
         elif estratificacao=="2":
             estratificacao1="DEINFO"
+            aguardar(3)
+            limpar_tela()
             break
         elif estratificacao=="3":
             estratificacao1="REITORIA"
+            aguardar(3)
+            limpar_tela()
             break
         elif estratificacao=="4":
             estratificacao1="DEPARTAMENTO DE COMPUTAÇÃO"
+            aguardar(3)
+            limpar_tela()
             break
         elif estratificacao=="5":
             estratificacao1=input("Qual o nome do bloco/setor?")
+            aguardar(3)
+            limpar_tela()
             break
         
+        elif estratificacao=="6":
+                print("Saindo...")
+                aguardar(3)
+                limpar_tela
+                return
     ############################################## CADASTRO (EMAIL DO USUÁRIO) ##############################################  
 
     while 1>0:
+            print("Digite 0 para sair!\n ")
             email_cadastro=input("Qual o seu email? ")
             if not email_cadastro:
                 print("O campo precisa ser preenchido!")
                 aguardar(3)
                 limpar_tela()
                 continue 
+
+            elif email_cadastro=="0":
+                print("Saindo...")
+                aguardar(3)
+                limpar_tela()
+                return
+            
             elif not email_valido(email_cadastro):
                 print("Email não é válido!")
                 aguardar(3)
                 limpar_tela()
                 continue
+
             else:
                 print(f"Email cadastrado! {email_cadastro}")
                 break 
@@ -150,13 +189,21 @@ def cadastro_usuario():
     ############################################## CADASTRO (CRIAÇÃO DE SENHA) ##############################################  
 
     while 1>0:
+            print("Digite 0 para sair!\n ")
             senha_cadastro=input("Crie uma senha de acesso: ").strip()
+            
 
             if not senha_cadastro:
                 print("O campo precisa ser preenchido!")
                 aguardar(3)
                 limpar_tela()
                 continue 
+
+            elif senha_cadastro=="0":
+                print("Saindo...")
+                aguardar(3)
+                limpar_tela()
+                return
 
             elif not any(char.isalpha() for char in senha_cadastro) or not any(char.isdigit() for char in senha_cadastro):
                 print("\nA senha deve conter:\n1- Letra Maiúscula\n2-Letra Minúscula\n3-Número\n4-Caractere Especial\n5-Conter de 8 a 12 caracters\n")
@@ -181,6 +228,7 @@ def cadastro_usuario():
                 aguardar(3)
                 limpar_tela()
                 continue 
+            
 
             else:
                 print("Senha cadastrada!")
@@ -191,6 +239,7 @@ def cadastro_usuario():
 
     ############################################## CADASTRO (CONFIRMAÇÃO DA SENHA) ##############################################  
     while 1>0:
+            print("Digite 0 para sair!\n ")
             senha_cadastro1= input("Confirme sua senha de acesso: ")
             if not senha_cadastro1:
                 print("O campo precisa ser preenchido! \n")
@@ -247,31 +296,42 @@ def cadastro_usuario():
 
     ############################################## CONFIRMAÇÃO DE VERIFICAÇÃO ##############################################
 
-    tentativas=3
-    while tentativas>0:
+    
+    while 1>0:
+        print("Digite 0 para sair!\n ")
         verificacao_usuario=input("Qual o código de verificação? ")
         if verificacao_usuario==codigo:
             print("Verificação concluída!")
             break
+        elif verificacao_usuario=="0":
+            print("Saindo...")
+            aguardar(3)
+            limpar_tela()
+            return
         else:
             print("Código incorreto!")
-            tentativas-=1
+            aguardar(2)
+            limpar_tela()
             continue
-        
-        if tentativas==0:
-            print("Falha na verificação!")
-            sys.exit()
+    
             
     usuario= Usuario(nome_cadastro, matricula_cadastro, estratificacao, email_cadastro, senha_cadastro).to_dict()
     ############################################## SALVANDO DADOS NO JSON #############################################################
 
     while 1>0:
         menu_usuario()
+        print("Digite 0 para sair!\n ")
         tipo_usuário = input("Qual o seu tipo de usuário? ")
         
         if tipo_usuário not in possibilidades_cadastro:
             print("Valor não é válido! ")
             continue
+
+        elif tipo_usuário=="0":
+            print("Saindo...")
+            aguardar(3)
+            limpar_tela()
+            return
 
         # Cria dicionário do usuário
         usuario = {

@@ -19,6 +19,13 @@
             "email": "brsl@discente.ifpe.edu.br",
             "senha": "Bruno151209@",
             "bloco/setor": "DEFS"
+        },
+        {
+            "nome": "Bruno",
+            "matricula": "20250012324",
+            "email": "bruno.rodrigol@ufrpe.br",
+            "senha": "Bruno151209@",
+            "bloco/setor": "DEINFO"
         }
     ]
 }
