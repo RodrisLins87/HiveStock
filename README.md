@@ -46,6 +46,27 @@ Ferramenta de gestão simples, intuitiva e didática
  📦 Análise dos produtos mais/menos usados
  
  👤 Análise por funcionário
+ 
+
+# 📚 Bibliotecas utilizadas
+
+os – Manipulação de arquivos e diretórios, operações do sistema.
+
+time – Controle de tempo e delays na execução.
+
+json – Leitura e gravação de dados em arquivos JSON.
+
+re – Expressões regulares para validação e tratamento de textos.
+
+random – Geração de números e escolhas aleatórias.
+
+sys – Interação com o sistema Python (ex.: encerrar o programa).
+
+smtplib – Envio de e-mails utilizando protocolo SMTP.
+
+email.message.EmailMessage – Construção e formatação de e-mails.
+
+mimetypes – Identificação automática do tipo (MIME) de arquivos.
 
  
 
