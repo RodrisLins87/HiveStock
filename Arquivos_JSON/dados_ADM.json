@@ -2,10 +2,10 @@
     "usuarios": [
         {},
         {
-            "nome": "Bruno Lins",
+            "nome": "Bruno",
             "matricula": "20250016866",
             "email": "rodrigibruno14@gmail.com",
-            "senha": "Bruno151209@"
+            "senha": "Tutu1987@"
         },
         {
             "nome": "Thyago Murilo",
@@ -16,16 +16,16 @@
         {
             "nome": "Hugo",
             "matricula": "20250019897",
-            "email": "brsl@discente.ifpe.edu.br",
-            "senha": "Bruno151209@",
-            "bloco/setor": "DEFS"
+            "email": "",
+            "senha": "Nana1966@",
+            "bloco/setor": "REITORIA"
         },
         {
-            "nome": "Bruno",
+            "nome": "Jo\u00e3o",
             "matricula": "20250012324",
             "email": "bruno.rodrigol@ufrpe.br",
-            "senha": "Bruno151209@",
-            "bloco/setor": "DEINFO"
+            "senha": "Hahu1313@",
+            "bloco/setor": "& C:/Users/amaro/AppData/Local/Microsoft/WindowsApps/python3.13.exe c:/Users/amaro/Documents/GitHub/HiveStock/HiveStock/main.py"
         }
     ]
 }

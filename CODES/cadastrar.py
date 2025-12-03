@@ -316,6 +316,7 @@ def cadastro_usuario():
     
             
     usuario= Usuario(nome_cadastro, matricula_cadastro, estratificacao, email_cadastro, senha_cadastro).to_dict()
+    
     ############################################## SALVANDO DADOS NO JSON #############################################################
 
     while 1>0:

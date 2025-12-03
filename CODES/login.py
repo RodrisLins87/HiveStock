@@ -13,9 +13,10 @@ from CODES.movimentacao import adicionar_quantidade_prod, retirada_produtos
 from CODES.monitoramento import monitoramento
 from CODES.relatorio_semana import produto_mais_usado_semana
 from CODES.relatorio_funcionario import relatorio_funcionarios
+from CODES.update_usuario import editar_adm,editar_funcionario
 
 def fazer_login():
-    caminhos_login=["1","2","3","4"]
+    caminhos_login=["1","2","3","4","5"]
     tentativas=3
 
     possibilidade_decisao_funcionario=["1","2","3"]
@@ -78,7 +79,7 @@ def fazer_login():
             aguardar(3)
             limpar_tela()
             while 1>0:  
-                print("[1] VISUALIZAR PERFIL\n[2] EXCLUIR PERFIL\n[3] AVANÇAR\n[4] SAIR\n")
+                print("[1] VISUALIZAR PERFIL\n[2] EXCLUIR PERFIL\n[3] AVANÇAR\n[4] EDITAR PERFIL\n[5] SAIR\n")
                 escolha_caminho=input("\nSelecione o que deseja:\n ")
                 if not escolha_caminho in caminhos_login:
                     print("Valor não é válido")
@@ -283,11 +284,25 @@ def fazer_login():
                             break
 
 
-                elif escolha_caminho=="4":
-                    print("Saindo...3,2,1")
+                elif escolha_caminho=="4" and tipo_usuario_login=="1":
+                    editar_adm(usuario_encontrado)
                     aguardar(3)
                     limpar_tela()
-                    return
+                    
+
+                elif escolha_caminho=="4" and tipo_usuario_login=="2":
+                    editar_funcionario(usuario_encontrado)
+                    aguardar(3)
+                    limpar_tela()
+                    
+                
+
+                elif escolha_caminho=="5":
+                    print("Saindo...")
+                    aguardar(3)
+                    limpar_tela()
+                    break
+
 
 
 
