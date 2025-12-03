@@ -1,9 +1,9 @@
 import json
 from datetime import datetime, timedelta
-from utilits import limpar_tela, arquivo_mov   
+from CODES.utilits import limpar_tela, arquivo_mov   
 
 
-def funcionario_mais_usou():
+def relatorio_funcionarios():
     try:
         with open(arquivo_mov, "r", encoding="utf-8") as f:
             movimentos = json.load(f)
@@ -68,5 +68,3 @@ def funcionario_mais_usou():
 
     input("\nPressione ENTER para sair...")
     limpar_tela()
-
-funcionario_mais_usou()

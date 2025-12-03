@@ -11,7 +11,6 @@ def carregar_produtos():
             try:
                 return json.load(f)
             except json.JSONDecodeError:
-                print("Arquivo vazio ou inválido, carregando uma nova lista")
                 return []
     except FileNotFoundError:                                                                             # caso o arquivo não exista
         return []  
