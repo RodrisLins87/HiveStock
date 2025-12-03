@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 
-def registrar_movimentacao(nome, quantidade, tipo):
+def registrar_movimentacao(nome, quantidade, tipo, nome_usuario):
     try:
         with open(arquivo_mov, "r") as f:
             movs = json.load(f)
@@ -16,7 +16,8 @@ def registrar_movimentacao(nome, quantidade, tipo):
         "nome": nome,
         "quantidade": quantidade,
         "tipo": tipo,               # "entrada" ou "saida"
-        "data": datetime.now().strftime("%d/%m/%Y %H:%M")
+        "data": datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "usuario": nome_usuario
     })
 
     with open(arquivo_mov, "w") as f:
@@ -95,7 +96,7 @@ def adicionar_quantidade_prod():
             else:
                 print("⚠️ Entrada inválida! Digite apenas 's' para sim ou 'n' para não.")
 
-def retirada_produtos():
+def retirada_produtos(nome_usuario):
     produtos = carregar_produtos()
     
     while True:
@@ -160,7 +161,7 @@ def retirada_produtos():
         salvar_produtos(produtos)
         listar_produtos()
         if not excluiu:
-            registrar_movimentacao(produtos[indice]["Nome"], quantidade, "saida")
+            registrar_movimentacao(produtos[indice]["Nome"], quantidade, "saida", nome_usuario)
 
         
         aguardar(2)

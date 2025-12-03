@@ -143,7 +143,7 @@ def fazer_login():
                     aguardar(3)
                     limpar_tela()
                     while 1>0:
-                        possibilidade_decisao_adm=["1","2","3","4","5","6","7", "8"]
+                        possibilidade_decisao_adm=["1","2","3","4","5","6","7", "8", "9"]
                         print("[1] CADASTRAR PRODUTO\n[2] VISUALIZAR ESTOQUE\n[3] ATUALIZAR PRODUTOS\n[4] EXCLUIR PRODUTOS\n[5] ADICIONAR QUANTIDADE\n[6] MONITORAMENTO\n[7] RELATORIO_SEMANA\n[8] SAIR")
                         decisao=input("Selecione o que deseja: ")
                         if not decisao in possibilidade_decisao_adm:
@@ -217,8 +217,6 @@ def fazer_login():
                             aguardar(2)
                             limpar_tela()
                             break
-                            
-
                       
 
                 elif escolha_caminho=="3" and tipo_usuario_login=="2":
@@ -267,7 +265,7 @@ def fazer_login():
 
                         elif escolha_funcionario=="2":
                             limpar_tela()
-                            retirada_produtos()
+                            retirada_produtos(usuario_encontrado['nome'])
                             aguardar(3)
                             limpar_tela()
 
