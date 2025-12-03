@@ -152,7 +152,7 @@ def retirada_produtos(nome_usuario):
         excluiu = False
         if produtos[indice]["Quantidade"] == 0:
             print(f"Foi retirado {quantidade} unidades de {produtos[indice]["Nome"]} do estoque")
-            registrar_movimentacao(produtos[indice]["Nome"], quantidade, "saida", nome_usuario)
+            registrar_movimentacao(produtos[indice]["Nome"], quantidade, "saida")
             produtos.pop(indice)
             excluiu = True
         else:

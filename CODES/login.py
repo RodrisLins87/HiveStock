@@ -12,7 +12,6 @@ from CODES.cadastro_de_produtos import cadastro_produtos,atualizar_produtos,excl
 from CODES.movimentacao import adicionar_quantidade_prod, retirada_produtos
 from CODES.monitoramento import monitoramento
 from CODES.relatorio_semana import produto_mais_usado_semana
-from CODES.relatorio_funcionarios import relatorio_funcionarios
 
 def fazer_login():
     caminhos_login=["1","2","3","4"]
@@ -145,7 +144,7 @@ def fazer_login():
                     limpar_tela()
                     while 1>0:
                         possibilidade_decisao_adm=["1","2","3","4","5","6","7", "8", "9"]
-                        print("[1] CADASTRAR PRODUTO\n[2] VISUALIZAR ESTOQUE\n[3] ATUALIZAR PRODUTOS\n[4] EXCLUIR PRODUTOS\n[5] ADICIONAR QUANTIDADE\n[6] MONITORAMENTO\n[7] RELATORIO_SEMANA\n[8] RELATORIO_FUNCIONARIOS\n[9] SAIR")
+                        print("[1] CADASTRAR PRODUTO\n[2] VISUALIZAR ESTOQUE\n[3] ATUALIZAR PRODUTOS\n[4] EXCLUIR PRODUTOS\n[5] ADICIONAR QUANTIDADE\n[6] MONITORAMENTO\n[7] RELATORIO_SEMANA\n[8] SAIR")
                         decisao=input("Selecione o que deseja: ")
                         if not decisao in possibilidade_decisao_adm:
                             print("NÃO CONFERE")
@@ -214,12 +213,6 @@ def fazer_login():
                             limpar_tela()
 
                         elif decisao=="8":
-                            limpar_tela()
-                            relatorio_funcionarios()
-                            aguardar(2)
-                            limpar_tela()
-
-                        elif decisao=="9":
                             print("Saindo")
                             aguardar(2)
                             limpar_tela()
