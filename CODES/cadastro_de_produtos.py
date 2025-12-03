@@ -50,7 +50,6 @@ def cadastro_produtos():
                 limpar_tela()
                 return
 
-        # ✔ A UNICA LINHA ALTERADA
         produto = Produto(tipo, nome_produto, quantidade, nota_fiscal, data_atual, mes_ano).to_dict()
 
         produtos = carregar_produtos()

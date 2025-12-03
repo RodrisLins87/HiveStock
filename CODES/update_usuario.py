@@ -103,6 +103,7 @@ def editar_adm(usuario_encontrado):
                 continue
             usuario_encontrado["senha"] = novo
         elif opcao == "5":
+            limpar_tela()
             novo = escolher_bloco()
             if novo is None:
                 print("Alteração do bloco cancelada.")

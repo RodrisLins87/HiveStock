@@ -224,6 +224,7 @@ def fazer_login():
                             print("Saindo")
                             aguardar(2)
                             limpar_tela()
+                            break
 
                 elif escolha_caminho=="3" and tipo_usuario_login=="2":
                     print("Carregando...")
@@ -285,12 +286,14 @@ def fazer_login():
 
 
                 elif escolha_caminho=="4" and tipo_usuario_login=="1":
+                    limpar_tela()
                     editar_adm(usuario_encontrado)
                     aguardar(3)
                     limpar_tela()
                     
 
                 elif escolha_caminho=="4" and tipo_usuario_login=="2":
+                    limpar_tela()
                     editar_funcionario(usuario_encontrado)
                     aguardar(3)
                     limpar_tela()
@@ -301,7 +304,7 @@ def fazer_login():
                     print("Saindo...")
                     aguardar(3)
                     limpar_tela()
-                    break
+                    return
 
 
 
