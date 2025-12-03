@@ -12,6 +12,13 @@
             "matricula": "12345678987",
             "email": "thyagomurilo48@gmail.com",
             "senha": "Thyago@2006"
+        },
+        {
+            "nome": "uxgug",
+            "matricula": "20250034567",
+            "email": "rodrigibruno14@gmail.com",
+            "senha": "Bruno151209@",
+            "bloco/setor": "DEINFO"
         }
     ]
 }

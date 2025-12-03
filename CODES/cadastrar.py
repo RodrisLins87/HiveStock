@@ -10,6 +10,7 @@ from CODES.utilits import aguardar,limpar_tela
 import smtplib
 from email.message import EmailMessage
 import mimetypes
+from CODES.usuario import Usuario
 
 ############################################## FUNÇÕES DECLARADAS   ##############################################
  
@@ -83,14 +84,13 @@ def cadastro_usuario():
                 continue
 
             elif not len(matricula_cadastro)==11:
-                print("Matrícula não confere")
+                print("Matrícula não confere. Tem que ter:\n1-11 caracteres\n2-Não conter espaçoes\n3-Não conter Letras ou Caracteres Especiais\n.")
                 aguardar(3)
                 limpar_tela()
                 continue
 
             elif not matricula_cadastro.isdigit():
-                print("Matrícula não confere!\n ")
-                print("\n Digite apenas números. Sem espaços, letras ou caracteres especiais!")
+                print("Matrícula não confere. Tem que ter:\n1-11 caracteres\n2-Não conter espaçoes\n3-Não conter Letras ou Caracteres Especiais\n.")
                 aguardar(3)
                 limpar_tela()
                 continue
@@ -159,25 +159,25 @@ def cadastro_usuario():
                 continue 
 
             elif not any(char.isalpha() for char in senha_cadastro) or not any(char.isdigit() for char in senha_cadastro):
-                print("\nA senha deve conter letras e números!\n")
+                print("\nA senha deve conter:\n1- Letra Maiúscula\n2-Letra Minúscula\n3-Número\n4-Caractere Especial\n5-Conter de 8 a 12 caracters\n")
                 aguardar(3)
                 limpar_tela()
                 continue
 
             elif not any(char.isupper() for char in senha_cadastro) or not any(char.islower() for char in senha_cadastro):
-                print("\nA senha precisa conter letra maiúscula e minúscula! ")
+                print("\nA senha deve conter:\n1- Letra Maiúscula\n2-Letra Minúscula\n3-Número\n4-Caractere Especial\n5-Conter de 8 a 12 caracters\n")
                 aguardar(3)
                 limpar_tela()
                 continue
 
             elif not any(char in caracteres_especiais for char in senha_cadastro):
-                print("A senha precisa de caractere especial")
+                print("\nA senha deve conter:\n1- Letra Maiúscula\n2-Letra Minúscula\n3-Número\n4-Caractere Especial\n5-Conter de 8 a 12 caracters\n")
                 aguardar(3)
                 limpar_tela()
                 continue
 
             elif len(senha_cadastro)<8 or len(senha_cadastro)>12:
-                print("A senha deve conter de 8 a 12 caracteres! ")
+                print("\nA senha deve conter:\n1- Letra Maiúscula\n2-Letra Minúscula\n3-Número\n4-Caractere Especial\n5-Conter de 8 a 12 caracters\n")
                 aguardar(3)
                 limpar_tela()
                 continue 
@@ -190,19 +190,27 @@ def cadastro_usuario():
     limpar_tela()
 
     ############################################## CADASTRO (CONFIRMAÇÃO DA SENHA) ##############################################  
-
     while 1>0:
             senha_cadastro1= input("Confirme sua senha de acesso: ")
             if not senha_cadastro1:
                 print("O campo precisa ser preenchido! \n")
+                print("Digite 0 para sair")
                 aguardar(3)
                 limpar_tela()
-                continue
+
+            elif senha_cadastro1=="0":
+                print("Saindo...")
+                aguardar(3)
+                limpar_tela()
+                return
+            
             elif not senha_cadastro==senha_cadastro1:
                 print("A senha não confere! ")
+                print("Digite 0 para sair")
                 aguardar(3)
                 limpar_tela()
                 continue
+
             else:
                 print("Senha cadastrada!\n")
                 break
@@ -253,7 +261,8 @@ def cadastro_usuario():
         if tentativas==0:
             print("Falha na verificação!")
             sys.exit()
-
+            
+    usuario= Usuario(nome_cadastro, matricula_cadastro, estratificacao, email_cadastro, senha_cadastro).to_dict()
     ############################################## SALVANDO DADOS NO JSON #############################################################
 
     while 1>0:
@@ -278,6 +287,8 @@ def cadastro_usuario():
             arquivo_json = os.path.join("Arquivos_JSON", "dados_ADM.json")
         elif tipo_usuário == "2":
             arquivo_json = os.path.join("Arquivos_JSON", "dados_FUNCIONARIO.json")
+
+        
 
         # Carrega dados do JSON ou cria vazio se não existir
         if os.path.exists(arquivo_json):
